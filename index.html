@@ -1,1 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCD Labs | Hardware Engineering & Embedded Systems</title>
+    <style>
+        /* Variabili di Colore - Stile Tech/Dark */
+        :root {
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --accent-color: #58a6ff; /* Blu GitHub Tech */
+            --accent-success: #238636; /* Verde Shop/Ok */
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            text-shadow: 0 0 8px rgba(88, 166, 255, 0.5);
+        }
+
+        /* Header & Navigazione */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Sezione Hero (Presentazione Principale) */
+        .hero {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* Sezioni Generiche */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Griglia Filosofia */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .philosophy-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .philosophy-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        /* Griglia Prodotti */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Segnaposto per immagine hardware o rendering GLTF */
+        .product-image-placeholder {
+            background: linear-gradient(135deg, #1f242c 0%, #0d1117 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+            font-family: monospace;
+        }
+
+        .product-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .product-tag {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* Pulsanti di Azione */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-align: center;
+            flex: 1;
+            transition: filter 0.2s;
+        }
+
+        .btn:hover {
+            filter: brightness(1.2);
+            text-shadow: none;
+        }
+
+        .btn-doc {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-shop {
+            background-color: var(--accent-success);
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Layout fixes */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">SCD LABS</div>
+            <nav class="nav-links">
+                <a href="#filosofia">Filosofia</a>
+                <a href="#prodotti">Prodotti</a>
+                <a href="https://github.com/IL-NOME-ORGANIZZAZIONE" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>SCD Labs</h1>
+        <p>Progettazione hardware avanzata, sistemi embedded ed elettronica industriale ad alta precisione. Trasformiamo idee complesse in circuiti stampati affidabili e performanti.</p>
+    </section>
+
+    <!-- FILOSOFIA SECTION -->
+    <section id="filosofia" class="section">
+        <h2 class="section-title">La Nostra Filosofia</h2>
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <h3>Affidabilità Industriale</h3>
+                <p>Ogni circuito è progettato seguendo severi standard di integrità del segnale, filtraggio dei disturbi (EMI) e gestione termica ottimale per garantire cicli di vita continui.</p>
+            </div>
+            <div class="philosophy-card">
+                <h3>Trasparenza Documentale</h3>
+                <p>Crediamo nella chiarezza tecnica. Rilasciamo repository dedicati per agevolare l'integrazione firmware, i test di laboratorio e l'integrazione di sistema dei nostri moduli.</p>
+            </div>
+            <div class="philosophy-card">
+                <h3>Ingegneria di Precisione</h3>
+                <p>Dalla selezione accurata della componentistica di livello industriale fino allo sbroglio millimetrico del PCB, ottimizziamo ogni millimetro di rame.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODOTTI SECTION -->
+    <section id="prodotti" class="section">
+        <h2 class="section-title">I Nostri Moduli</h2>
+        <div class="products-grid">
+            
+            <!-- SCHEDA PRODOTTO 1 (Esempio SIM800L) -->
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    [ // MODELLO 3D GLTF O IMMAGINE ]
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Power Supply & Comms</span>
+                    <h3>PWR-SIM800L-IND</h3>
+                    <p>Modulo di alimentazione e connettività industriale ottimizzato per modem GSM SIM800L. Dotato di filtraggio EMI avanzato, regolazione LDO ad alta corrente transitoria e indicatori di stato di rete integrati su PCB a 2 layer.</p>
+                    <div class="btn-group">
+                        <a href="https://github.com/IL-NOME-ORGANIZZAZIONE/NOME-REPO-DOC" target="_blank" class="btn btn-doc">Documentazione</a>
+                        <a href="https://www.tindie.com/" target="_blank" class="btn btn-shop">Acquista</a> <!-- o eBay / Store proprietario -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCHEDA PRODOTTO 2 (Esempio Generico Futuro) -->
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    [ // MODELLO 3D GLTF O IMMAGINE ]
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Motor Control / Driver</span>
+                    <h3>Prossimo Progetto</h3>
+                    <p>Descrizione del tuo prossimo hardware, ad esempio stadi di potenza, schede di controllo basate su STM32, o architetture di isolamento galvanico per bus industriali.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-doc">Repo Git</a>
+                        <a href="#" class="btn btn-shop">Store</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 SCD Labs. Tutti i diritti riservati.</p>
+        <p style="margin-top: 5px; font-family: monospace; font-size: 0.8rem;">www.scdlabs.dev</p>
+    </footer>
+
+</body>
+</html>
