@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCD Labs - PWR-SIM800L-IND</title>
+    <style>
+        /* Variabili di Colore - Stile Coerente con la Home Page */
+        :root {
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent-blue: #58a6ff;
+            --accent-success: #238636;
+            --accent-success-text: #56d364;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 0px 0px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header Principale */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Struttura Principale */
+        main {
+            padding-bottom: 60px;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .product-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Sezione Avviso Legale */
+        .notice-box {
+            background-color: rgba(242, 141, 14, 0.05);
+            border: 1px solid #f28d0e;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.95rem;
+        }
+
+        .notice-title {
+            color: #f28d0e;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 30px 0;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-nav {
+            margin-top: 12px;
+            font-size: 0.85rem;
+        }
+
+        .footer-nav sep {
+            color: var(--border-color);
+            margin: 0 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-content">
+            <div class="logo">SCD <span>Labs</span></div>
+            <nav>
+                <a href="#">Hardware</a>
+                <a href="#">Documentazione</a>
+                <a href="#">Supporto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="product-title">PWR-SIM800L-IND</h1>
+        <p class="product-subtitle">Modulo di Alimentazione Industriale per SIM800L basato su MIC29302WU</p>
+        
+        <div class="notice-box">
+            <div class="notice-title">⚠️ NOTA DI VALUTAZIONE HARDWARE &amp; DISCLAIMER LEGALE</div>
+            <p style="margin-bottom: 12px;">
+                Questo modulo elettronico è destinato esclusivamente ad attività di ricerca, sviluppo, prototipazione e valutazione in ambienti di laboratorio da parte di personale qualificato o hobbisti esperti.
+            </p>
+            <p style="margin-bottom: 12px;">
+                Il modulo è un componente nudo, privo di involucro e non è da considerarsi un prodotto finito per uso domestico o commerciale generalizzato. Il produttore ha applicato le buone norme di progettazione elettronica, ma il modulo non è stato sottoposto a test formali di laboratorio per la marcatura CE/EMC.
+            </p>
+            <p style="margin-bottom: 0; font-weight: 500; color: var(--text-main, #e6edf3);">
+                Qualora l'acquirente decida di integrare questo modulo in apparecchiature o prodotti finiti destinati alla vendita, l'acquirente si assume la <strong>piena ed esclusiva responsabilità</strong> di eseguire tutti i test di conformità, sicurezza e compatibilità elettromagnetica richiesti dalle normative vigenti nel paese di destinazione.
+            </p>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <p>&copy; 2026 SCD Labs. Tutti i diritti riservati. | Progettazione Elettronica Industriale</p>
+    <p style="font-size: 0.8rem; color: var(--text-muted);">
+        Documentazione tecnica ufficiale e specifiche di progetto disponibili su <a href="https://www.scdlabs.dev">www.scdlabs.dev</a>
+    </p>
+    <div class="footer-nav">
+        <a href="S&COverview.html">Standards &amp; Compliance Matrix</a>
+        <sep>|</sep>
+        <a href="#">Hardware Design Report</a>
+    </div>
+</footer>
+
+</body>
+</html>
