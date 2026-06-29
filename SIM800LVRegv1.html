@@ -15,6 +15,7 @@
             --accent-blue: #58a6ff;
             --accent-success: #238636;
             --accent-success-text: #56d364;
+            --border-color: #30363d;
         }
 
         * {
@@ -39,12 +40,16 @@
         /* Header Principale */
         header {
             border-bottom: 1px solid var(--border-color);
+            background-color: white;
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;            
             padding-top: 20px;
             padding-bottom: 2px;
-            margin-bottom: 00px;
             text-align: center;
             margin: 0px;
-            background-color: white;
+            margin-bottom: 20px;
         }
 
         header h1 {
@@ -236,9 +241,10 @@
 
 <header>
     <div class="logo"> <img src="Images/logoScdLabs.jpg" alt="SCD Labs Logo" width="300"> </div>
-    <p style="padding-top:3px;">Ingegneria hardware e sviluppo sistemi embedded di livello industriale</p>
+    <p style="padding-top:3px;">Hardware Engineering & Evaluation Boards: Development Kits and Prototypes for Makers, R&D and Education
+        <!-- Ingegneria hardware e sviluppo sistemi embedded di livello industriale --></p>
 </header>
-<p style="margin-top:5px; border-top: 1px solid gray;"></p>
+<!-- <p style="margin-top:50px; border-top: 1px solid gray;"></p> -->
 
 <div class="container">
     
@@ -280,7 +286,10 @@
 
                 <ul>
                     <li><span class="highlight">Riduzione di Induttanze e Capacità Parassite:</span> I percorsi di ritorno della corrente e le geometrie delle tracce di potenza sono stati ridotti al minimo indispensabile per prevenire ringing di tensione e minimizzare le reattanze parassite del circuito stampato durante i transitori veloci.</li>
-                    <li><span class="highlight">Piazzole di Disaccoppiamento RF per Frequenze GSM (Opzionali):</span> Il layout prevede la predisposizione di due piazzole d'ingombro addizionali posizionate strategicamente a ridosso del carico. L'utente ha la facoltà di installare due condensatori ceramici ultra-veloci (MLCC) di tipo <span class=highlight>NPO/COG</span> (package 0603/0805) calibrati sui rispettivi punti di autorisonanza: un valore indicativo di <span class=highlight>33 pF</span> per la portante a <span class=highlight>900 MHz</span> e di <span class=highlight>10 pF</span> per la banda a <span class=highlight>1800 MHz</span>. Questo stadio opzimento permette di azzerare i disturbi a radiofrequenza direttamente alla fonte, impedendo che le piste di potenza irraggino rumore elettromagnetico verso i circuiti logici adiacenti.</li>
+                    <li><span class="highlight">Piazzole di Disaccoppiamento RF per Frequenze GSM (Opzionali):</span> Il layout prevede la predisposizione di due piazzole d'ingombro addizionali (C7-C8), posizionate strategicamente direttamente a ridosso dei pin di ingresso del regolatore lineare U1. L'utente ha la facoltà di installare due condensatori ceramici ultra-veloci (MLCC) di tipo <span class=highlight>NPO/COG</span> (package 0603/0805) calibrati sui rispettivi punti di autorisonanza: un valore indicativo di <span class=highlight>33-39 pF</span> per la portante a <span class=highlight>900 MHz</span> e di <span class=highlight>8.5-10 pF</span> per la banda a <span class=highlight>1800 MHz</span>. Configurati in parallelo tra il Pin 2 (Vin) e il Pin 3 (GND) del MIC29302WU, questi condensatori ceramici sono tarati per fornire un cammino a bassa impedenza verso massa per le frequenze portanti GSM a 900 MHz e 1800 MHz, prevenendo fenomeni di demodulazione RF all'interno dello stadio di regolazione. Questo stadio opzionale permette di azzerare i disturbi a radiofrequenza direttamente alla fonte, impedendo che le piste di potenza irraggino rumore elettromagnetico verso i circuiti logici adiacenti.
+                    <!--    Piazzole di Disaccoppiamento RF per Frequenze GSM (Opzionali):</span> Il layout prevede la predisposizione di due piazzole d'ingombro addizionali posizionate strategicamente a ridosso del carico. L'utente ha la facoltà di installare due condensatori ceramici ultra-veloci (MLCC) di tipo <span class=highlight>NPO/COG</span> (package 0603/0805) calibrati sui rispettivi punti di autorisonanza: un valore indicativo di <span class=highlight>33 pF</span> per la portante a <span class=highlight>900 MHz</span> e di <span class=highlight>10 pF</span> per la banda a <span class=highlight>1800 MHz</span>. Questo stadio opzimento permette di azzerare i disturbi a radiofrequenza direttamente alla fonte, impedendo che le piste di potenza irraggino rumore elettromagnetico verso i circuiti logici adiacenti.-->
+                </li>
+                    
                     <li><span class="highlight">Tecnologia MLCC X7R per la Stabilità di Linea:</span> Il filtro a pi-greco d'ingresso e gli stadi di disaccoppiamento (sia in entrata che in uscita del regolatore LDO Microchip) utilizzano rigorosamente condensatori ceramici multistrato (MLCC) con dielettrico <span class="highlight">X7R</span> in package standardizzato. Questa scelta garantisce un'elevata densità capacitiva unita a una stabilità termica industriale (da -55°C a +125°C), ideale per livellare il ripple a media frequenza e garantire che l'LDO lavori sempre in un regime di tensione lineare e privo di oscillazioni parassite.</li>
                     <li><span class="highlight">Piani di Massa Generosi:</span> Il layout utilizza piani di rame ad alta superficie sia sul livello top che sul bottom. Questa soluzione agisce come uno schermo elettrostatico continuo, stabilizza il potenziale di riferimento e ottimizza la dissipazione termica del regolatore, garantendo un'operatività costante ben al di sotto dei limiti di tolleranza termica dei componenti.</li>
                 </ul>
@@ -317,7 +326,7 @@
                     </ul>
                 </div>
 
-                <p>Per installazioni soggette a linee di alimentazione principali particolarmente lunghe o per impieghi in zone con scarsa copertura di segnale (dove il modem è costretto a trasmettere alla massima potenza RF), rimane comunque consigliato prevedere un ulteriore serbatoio capacitivo a ridosso del modulo.</p>
+                <p>Per installazioni soggette a linee di alimentazione principali particolarmente lunghe o per impieghi in zone con scarsa copertura di segnale (dove il modem è costretto a trasmettere alla massima potenza RF), rimane comunque consigliato prevedere un ulteriore serbatoio capacitivo <strong>a ridosso del modulo.</p>
                 
                 <div class="alert-box">
                     <p style="margin-bottom: 5px;"><strong style="color: #fff;">💡 Raccomandazione di Progetto:</strong></p>
@@ -330,7 +339,7 @@
                 
                 <img src="Images/schema.jpg" alt="Estratto dello Schema Elettrico PWR-SIM800L-IND" class="card-img">
                 
-                <p>La filosofia di progettazione del PWR-SIM800L-IND si basa sul principio della massima stabilità operativa. Per questo motivo, la sezione logica e di regolazione ricalca fedelmente il <strong>reference design ufficiale raccomandato dal produttore (SimCom)</strong>, garantendo la totale aderenza alle specifiche elettriche nominali del costruttore del chip.</p>
+                <p>La filosofia di progettazione del PWR-SIM800L-IND si basa sul principio della massima stabilità operativa. Per questo motivo, la sezione di regolazione e la rete di feedback analogica ricalcano fedelmente il <strong>reference design ufficiale raccomandato dal produttore (SimCom)</strong>, garantendo la totale aderenza alle specifiche elettriche nominali del costruttore del chip.</p>
                 
                 <div style="background-color: rgba(48, 54, 61, 0.2); border: 1px solid var(--border-color); border-radius: 6px; padding: 20px; margin-top: 15px;">
                     <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue); font-family: monospace;">L'OTTIMIZZAZIONE DI SCD LABS:</strong></p>
@@ -339,7 +348,6 @@
                     </p>
                     <ul style="margin-left: 15px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-muted);">
                         <li><span class="highlight">Filtro EMI d'Ingresso Integrato:</span> È stata inserita una cella a pi-greco completa direttamente sulla linea di alimentazione principale. Questa aggiunta, assente nei moduli commerciali generici, isola lo stadio di potenza dai transitori della rete esterna e scherma l'impianto dai disturbi di commutazione indotti dai burst del modem.</li>
-                        <li><span class="highlight">Layout di Riferimento Integro:</span> Nessuna deviazione dalle geometrie di accoppiamento consigliate per il modem, preservando l'integrità dei flussi di segnale originali.</li>
                         <li><span class="highlight">LED di Stato Blu High-Tech:</span> È stato integrato un LED di stato blu dedicato che monitora costantemente l'uscita del regolatore. Fornisce un feedback visivo immediato della presenza della tensione stabilizzata, fungendo da strumento diagnostico fondamentale durante i test in laboratorio o la manutenzione nei quadri industriali.</li>
                     </ul>
                     
@@ -545,7 +553,7 @@
 </div>
 
 <footer>
-    <p>&copy; 2026 SCD Labs. Tutti i diritti riservati. | Progettazione Elettronica Industriale</p>
+    <p>&copy; 2026 SCD Labs. Tutti i diritti riservati. | Evaluation Boards</p>
     <p style="margin-top: 5px; font-size: 0.8rem; color: var(--text-muted);">Documentazione tecnica ufficiale e specifiche di progetto disponibili su <a href="https://www.scdlabs.dev">www.scdlabs.dev</a></p>
     <div class="footer-nav">
         <a href="SIM800LVregSCO.html">Standards &amp; Compliance Matrix</a>

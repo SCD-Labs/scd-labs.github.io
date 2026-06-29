@@ -18,17 +18,28 @@
         --accent-blue: #58a6ff;
         --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
         --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        --border-color: #30363d;
     }
+
+* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
 /* Header Principale */
     header {
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid gray;
+        background-color: white;        
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: 0;
+        z-index: 100;      
         padding-top: 20px;
-        padding-bottom: 2px;
+        padding-bottom: 5px;
         margin-bottom: 00px;
         text-align: center;
         margin: 0px;
-        background-color: white;
     }
 
     header h1 {
@@ -245,9 +256,9 @@
 
 <header>
     <div class="logo"> <img src="Images/logoScdLabs.jpg" alt="SCD Labs Logo" width="300"> </div>
-    <p style="padding-top:3px;margin-bottom:0px">Ingegneria hardware e sviluppo sistemi embedded di livello industriale</p>
+    <p style="padding-top:3px;margin-bottom:0px">Hardware Engineering & Evaluation Boards: Development Kits and Prototypes for Makers, R&D and Education<!-- Ingegneria hardware e sviluppo sistemi embedded di livello industriale--></p>
 </header>
-<p style="margin-top:5px; border-top: 1px solid gray;"></p>
+<p style="margin-top:5px; padding-top:10px;"></p>
 
 <div class="scd-container">
 
@@ -342,7 +353,7 @@
 </div>
 
 <footer>
-    <p>&copy; 2026 SCD Labs. Tutti i diritti riservati. <!--| Progettazione Elettronica Industriale --> </p>
+    <p>&copy; 2026 SCD Labs. Tutti i diritti riservati. | Evaluation Boards <!--| Progettazione Elettronica Industriale --> </p>
     <p style="margin-top: 5px; font-size: 0.8rem; color: var(--text-muted);"><a href="index.html">www.scdlabs.dev</a></p>    
 </footer>
 
